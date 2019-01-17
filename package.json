@@ -1,0 +1,19 @@
+{
+  "name": "redux-tutorial",
+  "version": "0.0.1",
+  "description": "sample app for learning redux with react",
+  "main": "index.html",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/dsmcclain/redux-tutorial"
+  },
+  "keywords": [
+    "redux",
+    "react"
+  ],
+  "author": "Dylan McClain",
+  "license": "ISC"
+}
