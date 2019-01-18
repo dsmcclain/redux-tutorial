@@ -5,10 +5,11 @@ import {
 	VisibilityFilters
 } from './actions'
 
-import React, { Component} from "react";
-import {hot} from "react-hot-loader"; 
+import { combineReducers } from 'redux'; 
+
 
 //use ES6 object destructuring to declare SHOW_ALL
+//this gives us access to SHOW_ALL when we declare initial state
 const { SHOW_ALL } = VisibilityFilters
 
 function visibilityFilter(state = SHOW_ALL, action) {
@@ -45,11 +46,10 @@ function todos(state = [], action) {
 	}			
 }
 
-function todoApp(state = {}, action) {
-	return {
-		visibilityFilter: visibilityFilter(state.visibilityFilter, action),
-		todos: todos(state.todos, action)
-	}
-}
+//main reducer
+const todoApp = combineReducers({
+	visibilityFilter,
+	todos
+})
 
 export default todoApp;
