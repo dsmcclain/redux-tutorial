@@ -1,21 +1,3 @@
-//Store
-
-{
-	visibilityFilter: 'SHOW_ALL',
-	todos: [
-		{
-			text: 'Think about Redux',
-			completed: true
-		},
-		{
-			text: 'Keep state in a single tree',
-			completed: false
-		}
-	]
-}
-
-//reducers
-
 import { 
 	ADD_TODO,
 	TOGGLE_TODO,
@@ -23,15 +5,19 @@ import {
 	VisibilityFilters
 } from './actions'
 
-import { combineReducers } from 'redux'
+import React, { Component} from "react";
+import {hot} from "react-hot-loader"; 
 
 //use ES6 object destructuring to declare SHOW_ALL
 const { SHOW_ALL } = VisibilityFilters
 
-// set initial state
-const initialState = {
-	visibilityFilter: VisibilityFilter.SHOW_ALL,
-	todos: []
+function visibilityFilter(state = SHOW_ALL, action) {
+	switch (action.type) {
+		case SET_VISIBILITY_FILTER:
+			return action.filter
+		default:
+			return state
+	}
 }
 
 function todos(state = [], action) {
@@ -59,18 +45,11 @@ function todos(state = [], action) {
 	}			
 }
 
-function visibilityFilter(state = SHOW_ALL, action) {
-	switch (action.type) {
-		case SET_VISIBILITY_FILTER:
-			return action.filter
-		default:
-			return state
+function todoApp(state = {}, action) {
+	return {
+		visibilityFilter: visibilityFilter(state.visibilityFilter, action),
+		todos: todos(state.todos, action)
 	}
 }
 
-const todoApp = combineReducers({
-	visibilityFilter,
-	todos
-})
-
-export default hot(module)(todoApp);
+export default todoApp;

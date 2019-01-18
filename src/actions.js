@@ -14,18 +14,14 @@ export const VisibilityFilters = {
 
 // action creators
 
-function addTodo(text) {
+export function addTodo(text) {
 	return { type: ADD_TODO, text }
 }
 
-function toggleTodo(index) {
+export function toggleTodo(index) {
 	return { type: TOGGLE_TODO, index }
 }
 
-function setVisibilityFilter(filter) {
+export function setVisibilityFilter(filter) {
 	return { type: SET_VISIBILITY_FILTER, filter }
 }
-
-dispatch(addTodo(text))
-dispatch(toggleTodo(index))
-dispatch(setVisibilityFilter(filter))
